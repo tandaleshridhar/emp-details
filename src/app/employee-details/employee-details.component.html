@@ -1,0 +1,32 @@
+<kendo-grid
+  [kendoGridBinding]="gridView"
+  kendoGridSelectBy="id"
+  [selectedKeys]="mySelection"
+  [sortable]="true"
+  [groupable]="true"
+  [reorderable]="true"
+  [height]="480"
+  [columnMenu]="{ filter: true }"
+>
+  <ng-template kendoGridToolbarTemplate>
+    <input
+      placeholder="Search employee name"
+      kendoTextBox
+      (input)="onFilter($event.target.value)"
+    />
+    <!-- <input
+      type="checkbox"
+      name="exp2"
+      [(ngModel)]="expmore2"
+      (click)="(emp2years)"
+      id=""
+    /> -->
+    <p>Select Department</p>
+    <kendo-dropdownlist [data]="dept" (valueChange)="filterDept($event)">
+    </kendo-dropdownlist>
+    <span>Employees - {{ deptEmpCount }}</span>
+    <button kendoButton (click)="delete(id)">
+      Remove Employees of Development Department
+    </button>
+  </ng-template>
+</kendo-grid>
